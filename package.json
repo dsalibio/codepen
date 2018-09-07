@@ -4,6 +4,8 @@
   "description": "ReactJS boiler plate with material-ui integration",
   "main": "index.html",
   "scripts": {
+    "start": "webpack-dev-server",
+    "lint-hook": "eslint ./source/js -f table --ext .js --ext .jsx",
     "lint": "npm run lint-hook --silent || true",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,9 +21,13 @@
   "homepage": "https://github.com/dsalibio/codepen#readme",
   "dependencies": {
     "react": "^16.5.0",
-    "react-dom": "^16.5.0"
+    "react-dom": "^16.5.0",
+    "react-hot-loader": "^4.3.6",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
+    "babel-eslint": "^9.0.0",
     "eslint": "^5.5.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
