@@ -8,8 +8,8 @@ import Home from './Home';
 class App extends Component {
   render() {
     return (
-      <div className='app'>
-        <div className='page'>
+      <div className='App'>
+        <div className='Page'>
           <Switch>
             <Route exact path={ routeCodes.HOME } component={ Home } />
           </Switch>
