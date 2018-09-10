@@ -1,8 +1,10 @@
 const webpack = require('webpack');
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const paths = {
   source: path.join(__dirname, '../source'),
+  css: path.join(__dirname, '../source/assets/css/'),
   javascript: path.join(__dirname, '../source/js'),
   build: path.join(__dirname, '../build'),
 };
@@ -16,6 +18,10 @@ const IS_PRODUCTION = NODE_ENV === 'production';
 
 // plugins
 const plugins = [
+  // Extracts CSS to a file
+  new MiniCssExtractPlugin({
+    filename: outputFiles.css,
+  }),
   new webpack.DefinePlugin({
     'process.env': {
       NODE_ENV: JSON.stringify(NODE_ENV),
@@ -39,6 +45,50 @@ const rules = [
     use: ['babel-loader'],
   },
 ];
+
+// For both production and server ExtractTextPlugin is used
+if (IS_PRODUCTION || SERVER_RENDER) {
+  rules.push(
+    {
+      test: /\.css$/,
+      use: [
+        MiniCssExtractPlugin.loader,
+        {
+          loader: 'css-loader',
+          options: {
+            importLoaders: 1,
+            minimize: true,
+          },
+        },
+        'postcss-loader',
+      ],
+    }
+  );
+} else {
+  rules.push(
+    {
+      test: /\.css$/,
+      exclude: /node_modules/,
+      use: [
+        {
+          loader: 'style-loader',
+          options: { sourceMap: true },
+        },
+        {
+          loader: 'css-loader',
+          options: {
+            importLoaders: 1,
+            sourceMap: true,
+          },
+        },
+        {
+          loader: 'postcss-loader',
+          options: { sourceMap: true },
+        },
+      ],
+    }
+  );
+}
 
 // resolve
 const resolve = {

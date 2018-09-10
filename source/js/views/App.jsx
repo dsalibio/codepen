@@ -5,16 +5,14 @@ import { hot } from 'react-hot-loader';
 import { routeCodes } from '../constants/routeCodes';
 import Home from './Home';
 
+import '../../assets/css/global-style.css';
+
 class App extends Component {
   render() {
     return (
-      <div className='App'>
-        <div className='Page'>
-          <Switch>
-            <Route exact path={ routeCodes.HOME } component={ Home } />
-          </Switch>
-        </div>
-      </div>
+      <Switch>
+        <Route exact path={ routeCodes.HOME } component={ Home } />
+      </Switch>
     );
   }
 }
