@@ -6,13 +6,16 @@ import { routeCodes } from '../constants/routeCodes';
 import Home from './Home';
 
 import '../../assets/css/global-style.css';
+import Layout from '../components/global/Layout';
 
 class App extends Component {
   render() {
     return (
-      <Switch>
-        <Route exact path={ routeCodes.HOME } component={ Home } />
-      </Switch>
+      <Layout>
+        <Switch>
+          <Route exact path={ routeCodes.HOME } component={ Home } />
+        </Switch>
+      </Layout>
     );
   }
 }
