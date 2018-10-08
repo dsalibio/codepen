@@ -5,7 +5,7 @@ const {
 } = require('./config');
 
 const devServer = {
-  contentBase: IS_PRODUCTION ? paths.build : paths.resource,
+  contentBase: IS_PRODUCTION ? paths.build : paths.source,
   historyApiFallback: true,
   compress: IS_PRODUCTION,
   inline: !IS_PRODUCTION, // change to false for IE10

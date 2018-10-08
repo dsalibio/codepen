@@ -13,6 +13,7 @@ const outputFiles = require('./output-files').outputFiles;
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const SERVER_RENDER = process.env.SERVER_RENDER === 'true';
+const HYDRATE = process.env.HYDRATE === 'true';
 const IS_DEVELOPMENT = NODE_ENV === 'development';
 const IS_PRODUCTION = NODE_ENV === 'production';
 
@@ -26,6 +27,7 @@ const plugins = [
     'process.env': {
       NODE_ENV: JSON.stringify(NODE_ENV),
       SERVER_RENDER: JSON.stringify(SERVER_RENDER) === 'true',
+      HYDRATE: JSON.stringify(HYDRATE) === 'true',
     },
   }),
 ];
