@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const outputFiles = require('./output-files').outputFiles;
 
 const paths = {
   source: path.join(__dirname, '../source'),
@@ -8,8 +9,6 @@ const paths = {
   javascript: path.join(__dirname, '../source/js'),
   build: path.join(__dirname, '../build'),
 };
-
-const outputFiles = require('./output-files').outputFiles;
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const SERVER_RENDER = process.env.SERVER_RENDER === 'true';
