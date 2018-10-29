@@ -51,7 +51,7 @@ const rules = [
 if (IS_PRODUCTION || SERVER_RENDER) {
   rules.push(
     {
-      test: /(\.sass|\.css)$/,
+      test: /(\.css)$/,
       use: [
         MiniCssExtractPlugin.loader,
         {
@@ -62,14 +62,13 @@ if (IS_PRODUCTION || SERVER_RENDER) {
           },
         },
         'postcss-loader',
-        'sass-loader',
       ],
     }
   );
 } else {
   rules.push(
     {
-      test: /(\.sass|\.css)$/,
+      test: /(\.css)$/,
       exclude: /node_modules/,
       use: [
         {
@@ -85,10 +84,6 @@ if (IS_PRODUCTION || SERVER_RENDER) {
         },
         {
           loader: 'postcss-loader',
-          options: { sourceMap: true },
-        },
-        {
-          loader: 'sass-loader',
           options: { sourceMap: true },
         },
       ],
